@@ -1,0 +1,11 @@
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.deps.json
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.dll
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.csprojResolveAssemblyReference.cache
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.AssemblyInfoInputs.cache
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.AssemblyInfo.cs
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.pdb
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Core.dll
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Core.pdb
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.dll
+C:\Users\imemarpour\documents\visual studio 2017\Projects\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.pdb
