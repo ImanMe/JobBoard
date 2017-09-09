@@ -24,7 +24,7 @@ namespace JobBoard.AdminApi.Controllers
         {
             var country = await _unitOfWork.Countries.GetCountry(countryId);
             if (country == null)
-                return NotFound($"Country with the Id {countryId} is not found");
+                return NotFound($"Country with the Id: {countryId} is not found");
 
             var states = await _unitOfWork.States.GetStatesById(countryId);
 

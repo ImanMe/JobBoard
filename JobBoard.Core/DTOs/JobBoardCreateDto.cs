@@ -2,7 +2,7 @@
 {
     public class JobBoardCreateDto
     {
-        public string JobBoardName { get; set; }
+        public string Name { get; set; }
 
         public bool IsOnlineApply { get; set; }
 

@@ -1,8 +1,8 @@
-﻿using JobBoard.Core;
+﻿using AutoMapper;
+using JobBoard.Core;
 using JobBoard.Core.DTOs;
-using JobBoard.Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
@@ -11,48 +11,29 @@ namespace JobBoard.AdminApi.Controllers
     public class JobsCotroller : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public JobsCotroller(IUnitOfWork unitOfWork)
+        public JobsCotroller(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var jobs = await _unitOfWork.Jobs.GetJobs();
-            var x = jobs.Select(Factory);
-            return Ok(x);
+            return Ok(_mapper.Map<IEnumerable<JobDto>>(jobs));
         }
 
         [HttpGet("{id}", Name = "JobGet")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(long id)
         {
-            var country = _unitOfWork.Countries.GetCountry(id);
+            var job = await _unitOfWork.Jobs.GetJob(id);
 
-            return country != null ? (IActionResult)Ok(country) : NotFound();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody]Country model)
-        {
-            _unitOfWork.Countries.Add(model);
-
-            if (await _unitOfWork.Complete() <= 0) return BadRequest();
-
-            var newUri = Url.Link("JobGet", new { id = model.Id });
-
-            return Created(newUri, model);
-        }
-
-        public static JobDto Factory(Job job)
-        {
-            return new JobDto()
-            {
-                Id = job.Id,
-                Title = job.Title,
-                Country = job.Country.CountryCode
-            };
+            return job != null
+                ? Ok(_mapper.Map<JobDto>(job))
+                : (IActionResult)NotFound();
         }
     }
 }

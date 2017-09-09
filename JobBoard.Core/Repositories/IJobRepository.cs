@@ -6,6 +6,7 @@ namespace JobBoard.Core.Repositories
 {
     public interface IJobRepository
     {
+        Task<Job> GetJob(long id);
         Task<IEnumerable<Job>> GetJobs();
     }
 }

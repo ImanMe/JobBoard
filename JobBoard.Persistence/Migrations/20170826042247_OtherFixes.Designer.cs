@@ -57,7 +57,7 @@ namespace JobBoard.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CategoryName")
+                    b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("Id");
@@ -70,11 +70,11 @@ namespace JobBoard.Persistence.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CountryCode")
+                    b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(12);
 
-                    b.Property<string>("CountryName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60);
 
@@ -225,7 +225,7 @@ namespace JobBoard.Persistence.Migrations
 
                     b.Property<bool>("IsOnlineApply");
 
-                    b.Property<string>("JobBoardName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255);
 
@@ -289,7 +289,7 @@ namespace JobBoard.Persistence.Migrations
                         .IsRequired()
                         .HasMaxLength(12);
 
-                    b.Property<string>("StateName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60);
 

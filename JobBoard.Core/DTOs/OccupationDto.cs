@@ -2,8 +2,6 @@
 {
     public class OccupationDto
     {
-        public int Id { get; set; }
-
-        public string FullOccupationName { get; set; }
+        public string Name { get; set; }
     }
 }

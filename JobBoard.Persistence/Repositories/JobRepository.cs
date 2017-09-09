@@ -14,10 +14,35 @@ namespace JobBoard.Persistence.Repositories
         {
             _context = context;
         }
+
+        public async Task<Job> GetJob(long id)
+        {
+            var job = await _context.Jobs
+                .Include(j => j.Country)
+                .Include(j => j.State)
+                .Include(j => j.EmploymentType)
+                .Include(j => j.SalaryType)
+                .Include(j => j.Category)
+                .Include(j => j.JobBoard)
+                .Include(j => j.JobOccupations)
+                .ThenInclude(e => e.Occupation)
+                .FirstOrDefaultAsync(j => j.Id == id);
+
+            return job;
+
+        }
+
         public async Task<IEnumerable<Job>> GetJobs()
         {
             var jobs = await _context.Jobs
                 .Include(j => j.Country)
+                .Include(j => j.State)
+                .Include(j => j.EmploymentType)
+                .Include(j => j.SalaryType)
+                .Include(j => j.Category)
+                .Include(j => j.JobBoard)
+                .Include(j => j.JobOccupations)
+                .ThenInclude(e => e.Occupation)
                 .ToListAsync();
 
             return jobs;

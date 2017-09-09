@@ -40,8 +40,6 @@
 
         public string CreatedDate { get; set; }
 
-        public int CategoryId { get; set; }
-
         public string Category { get; set; }
 
         public string EditedBy { get; set; }
@@ -58,7 +56,7 @@
 
         public string JobBoard { get; set; }
 
-        public int JobBoardId { get; set; }
+        public string EmploymentType { get; set; }
 
         public string SalaryType { get; set; }
 
@@ -74,6 +72,6 @@
 
         public string Tags { get; set; }
 
-        public bool IsExpired { get; set; }
+        //public Stat Stat { get; set; }
     }
 }
