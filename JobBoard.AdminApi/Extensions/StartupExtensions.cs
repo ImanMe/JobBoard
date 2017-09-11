@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using FluentValidation.AspNetCore;
 using JobBoard.Core;
 using JobBoard.Core.Repositories;
+using JobBoard.Core.Validations;
 using JobBoard.Persistence;
 using JobBoard.Persistence.DbInitializers;
 using JobBoard.Persistence.Repositories;
@@ -24,11 +26,14 @@ namespace JobBoard.AdminApi.Extensions
             services.AddScoped<IEmploymentRepository, EmploymentTypeRepository>();
             services.AddScoped<IJobBoardRepository, JobBoardRepository>();
             services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IJobOccupationRepository, JobOccupationRepository>();
             services.AddTransient<JobBoardInitializer>();
             services.AddDbContext<JobBoardContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("JobBoardConnection")));
             services.AddAutoMapper();
-            services.AddMvc();
+            services.AddMvc()
+                .AddFluentValidation(fvc =>
+                fvc.RegisterValidatorsFromAssemblyContaining<JobBoardCreateDtoValidator>());
             return services;
         }
     }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "3febef6046a5f6b72ecd362ae6037570d43cb0d2"
+    "signature": "b56efabc598663fd0352ee6f8d40a1d54552601d"
   },
   "compilationOptions": {
     "defines": [
@@ -23,7 +23,6 @@
     ".NETCoreApp,Version=v2.0": {
       "JobBoard.AdminApi/1.0.0": {
         "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "3.0.1",
           "JobBoard.Core": "1.0.0",
           "JobBoard.Persistence": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.0",
@@ -75,6 +74,30 @@
         },
         "compile": {
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
+      "FluentValidation/7.1.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/7.1.1": {
+        "dependencies": {
+          "FluentValidation": "7.1.1",
+          "Microsoft.AspNetCore.Mvc": "2.0.0",
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/FluentValidation.AspNetCore.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/FluentValidation.AspNetCore.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -3839,6 +3862,10 @@
         }
       },
       "JobBoard.Core/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "3.0.1",
+          "FluentValidation.AspNetCore": "7.1.1"
+        },
         "runtime": {
           "JobBoard.Core.dll": {}
         },
@@ -4056,6 +4083,20 @@
       "sha512": "sha512-i3IAYqWdE2UbqsmiiXE2L3khtKwkr+J8mT0zvUaiFUg72zC6BgLBo3dFvU5krq7QKBSsKVQ0NTCl/NmDoC0Hng==",
       "path": "automapper.extensions.microsoft.dependencyinjection/3.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.3.0.1.nupkg.sha512"
+    },
+    "FluentValidation/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+EOmm3XjvgSuPWqVDqCT807cPwerhJTK2qNi2+CfCvbSn5Jq4+3aRcB6buUJeeOwRLJxFAvYpTZyJTx6w6RAoQ==",
+      "path": "fluentvalidation/7.1.1",
+      "hashPath": "fluentvalidation.7.1.1.nupkg.sha512"
+    },
+    "FluentValidation.AspNetCore/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vvgboaCWRVDY9P/UX0UOiilvpHFhBBjKEgZj6PSAIBa/XXDtdrsDAiM86b3xMKMlalNgaCFDstgO627ekx97CQ==",
+      "path": "fluentvalidation.aspnetcore/7.1.1",
+      "hashPath": "fluentvalidation.aspnetcore.7.1.1.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

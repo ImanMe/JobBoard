@@ -2,7 +2,7 @@
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
 
-namespace JobBoard.AdminApi.Mappings
+namespace JobBoard.Core.MappingProfiles
 {
     public class MappingProfile : Profile
     {
@@ -10,11 +10,16 @@ namespace JobBoard.AdminApi.Mappings
         {
             CreateMap<Country, CountryDto>();
             CreateMap<State, StateDto>();
-            CreateMap<Core.Models.JobBoard, JobBoardDto>();
+            CreateMap<Models.JobBoard, JobBoardDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.JobBoardName));
             CreateMap<SalaryType, SalaryTypeDto>();
+            CreateMap<JobBoardCreateDto, Models.JobBoard>()
+                .ForMember(dest => dest.JobBoardName, opt => opt.MapFrom(src => src.Name));
+            CreateMap<JobBoardUpdateDto, Models.JobBoard>()
+                .ForMember(dest => dest.JobBoardName, opt => opt.MapFrom(src => src.Name));
             CreateMap<EmploymentType, EmploymentTypeDto>();
-            CreateMap<JobBoardCreateDto, Core.Models.JobBoard>();
-            CreateMap<Occupation, OccupationDto>();
+            CreateMap<Occupation, OccupationDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.OccupationName));
             CreateMap<JobOccupation, JobOccupationDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<Job, JobDto>()
@@ -35,6 +40,8 @@ namespace JobBoard.AdminApi.Mappings
                     var dt = src.EditedDate;
                     return dt?.ToShortDateString();
                 }));
+            CreateMap<JobOccupationDto, JobOccupation>();
+            CreateMap<JobFormDto, Job>();
         }
     }
 }

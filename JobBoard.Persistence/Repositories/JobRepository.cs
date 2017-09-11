@@ -47,5 +47,11 @@ namespace JobBoard.Persistence.Repositories
 
             return jobs;
         }
+
+        public void Add(Job job)
+        {
+            _context.Jobs.Add(job);
+            _context.ChangeTracker.DetectChanges();
+        }
     }
 }

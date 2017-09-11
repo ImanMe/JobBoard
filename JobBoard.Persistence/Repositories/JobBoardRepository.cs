@@ -13,7 +13,7 @@ namespace JobBoard.Persistence.Repositories
         {
             _context = context;
 
-            context.ChangeTracker.QueryTrackingBehavior
+            _context.ChangeTracker.QueryTrackingBehavior
                 = QueryTrackingBehavior.NoTracking;
         }
 
@@ -34,18 +34,19 @@ namespace JobBoard.Persistence.Repositories
         public void Add(Core.Models.JobBoard jobBoard)
         {
             _context.JobBoards.Add(jobBoard);
+            _context.ChangeTracker.DetectChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Core.Models.JobBoard jobBoard)
         {
-            var jobBoard = _context.JobBoards.Find(id);
             _context.Entry(jobBoard).State = EntityState.Deleted;
+            _context.ChangeTracker.DetectChanges();
         }
 
-        public void Edit(int id)
+        public void Edit(Core.Models.JobBoard jobBoard)
         {
-            var jobBoard = _context.JobBoards.Find(id);
             _context.Entry(jobBoard).State = EntityState.Modified;
+            _context.ChangeTracker.DetectChanges();
         }
     }
 }

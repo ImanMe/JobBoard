@@ -8,5 +8,6 @@ namespace JobBoard.Core.Repositories
     {
         Task<Job> GetJob(long id);
         Task<IEnumerable<Job>> GetJobs();
+        void Add(Job job);
     }
 }

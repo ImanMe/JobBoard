@@ -53,5 +53,38 @@ namespace JobBoard.AdminApi.Controllers
 
             return Created(newUri, jobBoard);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromRoute]int id, [FromBody]JobBoardUpdateDto jobBoardUpdateDto)
+        {
+            var jobBoard = _unitOfWork.JobBoards.GetJobBoard(id);
+
+            if (jobBoard == null) return NotFound();
+
+            if (!ModelState.IsValid) return BadRequest();
+
+            var jobBoardUpdated = _mapper
+                .Map<Core.Models.JobBoard>(jobBoardUpdateDto);
+
+            _unitOfWork.JobBoards.Edit(jobBoardUpdated);
+
+            await _unitOfWork.Complete();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute]int id)
+        {
+            var jobBoard = await _unitOfWork.JobBoards.GetJobBoard(id);
+
+            if (jobBoard == null) return NotFound();
+
+            _unitOfWork.JobBoards.Delete(jobBoard);
+
+            await _unitOfWork.Complete();
+
+            return NoContent();
+        }
     }
 }

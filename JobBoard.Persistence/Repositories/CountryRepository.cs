@@ -54,14 +54,14 @@ namespace JobBoard.Persistence.Repositories
         {
             var country = _context.Countries.Find(id);
             _context.Entry(country).State = EntityState.Deleted;
-            _context.SaveChanges();
+
         }
 
         public void Edit(int id)
         {
             var country = _context.Countries.Find(id);
             _context.Entry(country).State = EntityState.Modified;
-            _context.SaveChanges();
+
         }
     }
 }

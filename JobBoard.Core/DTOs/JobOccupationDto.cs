@@ -2,6 +2,7 @@
 {
     public class JobOccupationDto
     {
-        public OccupationDto Occupation { get; set; }
+        public int OccupationId { get; set; }
+        public long JobId { get; set; }
     }
 }
