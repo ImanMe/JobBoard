@@ -8318,11 +8318,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\imemarpour\\documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj",
+      "projectUniqueName": "C:\\demos\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj",
       "projectName": "JobBoard.Persistence",
-      "projectPath": "C:\\Users\\imemarpour\\documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj",
+      "projectPath": "C:\\demos\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj",
       "packagesPath": "C:\\Users\\imemarpour\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\imemarpour\\documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard.Persistence\\obj\\",
+      "outputPath": "C:\\demos\\JobBoard\\JobBoard.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8341,8 +8341,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\imemarpour\\documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj": {
-              "projectPath": "C:\\Users\\imemarpour\\documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj"
+            "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj": {
+              "projectPath": "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj"
             }
           }
         }
