@@ -51,7 +51,9 @@ namespace JobBoard.AdminApi.Controllers
 
             var newUri = Url.Link(UriName.JobBoardGet, new { id = jobBoard.Id });
 
-            return Created(newUri, jobBoard);
+            var jobBoardDto = _mapper.Map<JobBoardDto>(jobBoard);
+
+            return Created(newUri, jobBoardDto);
         }
 
         [HttpPut("{id}")]

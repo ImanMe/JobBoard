@@ -5,7 +5,6 @@ using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
@@ -40,31 +39,21 @@ namespace JobBoard.AdminApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] JobFormDto jobFormDto)
+        public async Task<IActionResult> Post([FromBody] JobCreateDto jobCreateDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            if (!ModelState.IsValid) return BadRequest();
 
-            var job = _mapper.Map<Job>(jobFormDto);
+            var job = _mapper.Map<Job>(jobCreateDto);
 
             _unitOfWork.Jobs.Add(job);
 
             await _unitOfWork.Complete();
 
-            var listOfOccupations = jobFormDto.SelectedOccupation
-                .Select(occupationId => new JobOccupationDto
-                {
-                    OccupationId = occupationId,
-                    JobId = job.Id
-                }).ToList();
+            var jobDto = _mapper.Map<JobDto>(job);
 
-            var jobOccupation = _mapper.Map<IEnumerable<JobOccupation>>(listOfOccupations);
+            var newUri = Url.Link(UriName.JobGet, new { id = job.Id });
 
-            _unitOfWork.JobOccupations.Add(jobOccupation);
-
-            await _unitOfWork.Complete();
-
-            return Ok();
+            return Created(newUri, jobDto);
         }
     }
 }

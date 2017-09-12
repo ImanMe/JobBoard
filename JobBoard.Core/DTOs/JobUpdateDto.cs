@@ -2,7 +2,7 @@
 
 namespace JobBoard.Core.DTOs
 {
-    public class JobFormDto
+    public class JobUpdateDto
     {
         public long Id { get; set; }
 
@@ -20,7 +20,7 @@ namespace JobBoard.Core.DTOs
 
         public string Address { get; set; }
 
-        public bool IsEverGreen { get; set; } = false;
+        public bool IsEverGreen { get; set; }
 
         public int SchedulingPod { get; set; }
 
@@ -40,8 +40,6 @@ namespace JobBoard.Core.DTOs
 
         public string CreatedBy { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.Now.Date;
-
         public int CategoryId { get; set; }
 
         public int[] SelectedOccupation { get; set; }
@@ -54,7 +52,7 @@ namespace JobBoard.Core.DTOs
 
         public string Currency { get; set; }
 
-        public bool IsBestPerforming { get; set; } = false;
+        public bool IsBestPerforming { get; set; }
 
         public string Author { get; set; }
 
@@ -72,7 +70,7 @@ namespace JobBoard.Core.DTOs
 
         public long? EverGreenId { get; set; }
 
-        public bool IsSponsored { get; set; } = false;
+        public bool IsSponsored { get; set; }
 
         public string Tags { get; set; }
 

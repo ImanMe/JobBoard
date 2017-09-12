@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
+using System.Linq;
 
 namespace JobBoard.Core.MappingProfiles
 {
@@ -41,7 +42,10 @@ namespace JobBoard.Core.MappingProfiles
                     return dt?.ToShortDateString();
                 }));
             CreateMap<JobOccupationDto, JobOccupation>();
-            CreateMap<JobFormDto, Job>();
+            CreateMap<JobCreateDto, Job>()
+                .ForMember(dest => dest.JobOccupations, opt => opt.MapFrom(src => src.SelectedOccupation.Select(jo => new JobOccupation { OccupationId = jo })));
+            CreateMap<Job, JobCreateDto>()
+                .ForMember(dest => dest.SelectedOccupation, opt => opt.MapFrom(src => src.JobOccupations.Select(f => f.OccupationId)));
         }
     }
 }
