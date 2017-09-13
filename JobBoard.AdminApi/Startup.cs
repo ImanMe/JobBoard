@@ -1,4 +1,5 @@
 ﻿using JobBoard.AdminApi.Extensions;
+using JobBoard.Persistence.DbInitializers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,8 +24,8 @@ namespace JobBoard.AdminApi
 
         public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
-            ILoggerFactory loggerFactory)
-        //JobBoardInitializer seeder)
+            ILoggerFactory loggerFactory,
+        JobBoardInitializer seeder)
         {
             loggerFactory.AddConsole();
 
@@ -39,7 +40,7 @@ namespace JobBoard.AdminApi
 
             app.UseMvc();
 
-            //seeder.Seed().Wait();
+            seeder.Seed().Wait();
         }
     }
 }

@@ -28,3 +28,18 @@ C:\demos\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.As
 C:\demos\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.AssemblyInfo.cs
 C:\demos\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.dll
 C:\demos\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.AdminApi.deps.json
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.AdminApi.runtimeconfig.json
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.AdminApi.runtimeconfig.dev.json
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.AdminApi.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.AdminApi.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.Core.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.Persistence.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.Core.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\bin\Debug\netcoreapp2.0\JobBoard.Persistence.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.csprojResolveAssemblyReference.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.csproj.CoreCompileInputs.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.AssemblyInfoInputs.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.AssemblyInfo.cs
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.AdminApi\obj\Debug\netcoreapp2.0\JobBoard.AdminApi.pdb

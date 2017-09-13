@@ -17,7 +17,7 @@ namespace JobBoard.Persistence
         public DbSet<Category> Categories { get; set; }
         public DbSet<Occupation> Occupations { get; set; }
         public DbSet<Core.Models.JobBoard> JobBoards { get; set; }
-        public DbSet<JobOccupation> JobOccupations { get; set; }
+        //public DbSet<JobOccupation> Occupations { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<SalaryType> SalaryTypes { get; set; }
         public DbSet<EmploymentType> EmploymentTypes { get; set; }

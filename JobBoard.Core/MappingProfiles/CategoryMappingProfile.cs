@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JobBoard.Core.MappingProfiles
 {
@@ -11,7 +8,8 @@ namespace JobBoard.Core.MappingProfiles
     {
         public CategoryMappingProfile()
         {
-            CreateMap<Category, CategoryDto>();
+            CreateMap<Category, CategoryDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.CategoryName));
         }
     }
 }

@@ -20,3 +20,14 @@ C:\demos\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persiste
 C:\demos\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.AssemblyInfo.cs
 C:\demos\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.dll
 C:\demos\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.deps.json
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Persistence.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Core.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\bin\Debug\netcoreapp2.0\JobBoard.Core.pdb
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.csprojResolveAssemblyReference.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.AssemblyInfoInputs.cache
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.AssemblyInfo.cs
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.dll
+C:\Users\imemarpour\Documents\visual studio 2017\Projects\JobBoard\JobBoard\JobBoard.Persistence\obj\Debug\netcoreapp2.0\JobBoard.Persistence.pdb

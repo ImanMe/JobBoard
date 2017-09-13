@@ -7844,11 +7844,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj",
+      "projectUniqueName": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj",
       "projectName": "JobBoard.Core",
-      "projectPath": "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj",
+      "projectPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj",
       "packagesPath": "C:\\Users\\imemarpour\\.nuget\\packages\\",
-      "outputPath": "C:\\demos\\JobBoard\\JobBoard.Core\\obj\\",
+      "outputPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

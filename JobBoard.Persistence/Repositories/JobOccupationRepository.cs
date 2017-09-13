@@ -21,5 +21,10 @@ namespace JobBoard.Persistence.Repositories
         {
             _context.AddRange(jobOccupation);
         }
+
+        public void Delete(IEnumerable<JobOccupation> jobOccupations)
+        {
+            _context.RemoveRange(jobOccupations);
+        }
     }
 }

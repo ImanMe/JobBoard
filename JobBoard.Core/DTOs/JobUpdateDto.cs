@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JobBoard.Core.DTOs
 {
     public class JobUpdateDto
     {
+        public JobUpdateDto()
+        {
+            Occupations = new List<int>();
+        }
         public long Id { get; set; }
 
         public string Title { get; set; }
@@ -42,7 +47,7 @@ namespace JobBoard.Core.DTOs
 
         public int CategoryId { get; set; }
 
-        public int[] SelectedOccupation { get; set; }
+        public ICollection<int> Occupations { get; set; }
 
         public string EditedBy { get; set; }
 

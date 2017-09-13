@@ -12703,11 +12703,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\demos\\JobBoard\\JobBoard.AdminApi\\JobBoard.AdminApi.csproj",
+      "projectUniqueName": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.AdminApi\\JobBoard.AdminApi.csproj",
       "projectName": "JobBoard.AdminApi",
-      "projectPath": "C:\\demos\\JobBoard\\JobBoard.AdminApi\\JobBoard.AdminApi.csproj",
+      "projectPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.AdminApi\\JobBoard.AdminApi.csproj",
       "packagesPath": "C:\\Users\\imemarpour\\.nuget\\packages\\",
-      "outputPath": "C:\\demos\\JobBoard\\JobBoard.AdminApi\\obj\\",
+      "outputPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.AdminApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12726,11 +12726,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\demos\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj": {
-              "projectPath": "C:\\demos\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj"
+            "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj": {
+              "projectPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Persistence\\JobBoard.Persistence.csproj"
             },
-            "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj": {
-              "projectPath": "C:\\demos\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj"
+            "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj": {
+              "projectPath": "C:\\Users\\imemarpour\\Documents\\visual studio 2017\\Projects\\JobBoard\\JobBoard\\JobBoard.Core\\JobBoard.Core.csproj"
             }
           }
         }

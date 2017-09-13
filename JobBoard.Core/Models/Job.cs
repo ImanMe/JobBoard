@@ -8,7 +8,7 @@ namespace JobBoard.Core.Models
     {
         public Job()
         {
-            JobOccupations = new Collection<JobOccupation>();
+            Occupations = new Collection<JobOccupation>();
         }
 
         public long Id { get; set; }
@@ -53,7 +53,7 @@ namespace JobBoard.Core.Models
 
         public Category Category { get; set; }
 
-        public ICollection<JobOccupation> JobOccupations { get; set; }
+        public ICollection<JobOccupation> Occupations { get; set; }
 
         public string EditedBy { get; set; }
 

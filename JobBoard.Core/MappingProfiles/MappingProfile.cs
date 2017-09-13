@@ -9,20 +9,6 @@ namespace JobBoard.Core.MappingProfiles
     {
         public MappingProfile()
         {
-            CreateMap<Country, CountryDto>();
-            CreateMap<State, StateDto>();
-            CreateMap<Models.JobBoard, JobBoardDto>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.JobBoardName));
-            CreateMap<SalaryType, SalaryTypeDto>();
-            CreateMap<JobBoardCreateDto, Models.JobBoard>()
-                .ForMember(dest => dest.JobBoardName, opt => opt.MapFrom(src => src.Name));
-            CreateMap<JobBoardUpdateDto, Models.JobBoard>()
-                .ForMember(dest => dest.JobBoardName, opt => opt.MapFrom(src => src.Name));
-            CreateMap<EmploymentType, EmploymentTypeDto>();
-            CreateMap<Occupation, OccupationDto>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.OccupationName));
-            CreateMap<JobOccupation, JobOccupationDto>();
-            CreateMap<Category, CategoryDto>();
             CreateMap<Job, JobDto>()
                 .ForMember(dest => dest.JobBoard, opt => opt.MapFrom(src => src.JobBoard.JobBoardName))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.CategoryName))
@@ -41,11 +27,27 @@ namespace JobBoard.Core.MappingProfiles
                     var dt = src.EditedDate;
                     return dt?.ToShortDateString();
                 }));
-            CreateMap<JobOccupationDto, JobOccupation>();
+
             CreateMap<JobCreateDto, Job>()
-                .ForMember(dest => dest.JobOccupations, opt => opt.MapFrom(src => src.SelectedOccupation.Select(jo => new JobOccupation { OccupationId = jo })));
+                .ForMember(dest => dest.Occupations, opt => opt.MapFrom(src => src.SelectedOccupation.Select(jo => new JobOccupation { OccupationId = jo })));
+
             CreateMap<Job, JobCreateDto>()
-                .ForMember(dest => dest.SelectedOccupation, opt => opt.MapFrom(src => src.JobOccupations.Select(f => f.OccupationId)));
+                .ForMember(dest => dest.SelectedOccupation, opt => opt.MapFrom(src => src.Occupations.Select(f => f.OccupationId)));
+
+            CreateMap<JobUpdateDto, Job>()
+                .ForMember(v => v.Occupations, opt => opt.Ignore())
+                .AfterMap((vr, v) =>
+                {
+                    // Remove unselected features
+                    var removedFeatures = v.Occupations.Where(f => !vr.Occupations.Contains(f.OccupationId)).ToList();
+                    foreach (var f in removedFeatures)
+                        v.Occupations.Remove(f);
+
+                    // Add new features
+                    var addedFeatures = vr.Occupations.Where(id => !v.Occupations.Any(f => f.OccupationId == id)).Select(id => new JobOccupation() { OccupationId = id }).ToList();
+                    foreach (var f in addedFeatures)
+                        v.Occupations.Add(f);
+                });
         }
     }
 }

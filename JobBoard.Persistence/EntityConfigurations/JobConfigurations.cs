@@ -8,6 +8,8 @@ namespace JobBoard.Persistence.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Job> builder)
         {
+            builder.HasOne(j => j.State).WithMany().OnDelete(DeleteBehavior.Restrict);
+
             builder.Property(j => j.Title)
                 .IsRequired()
                 .HasMaxLength(255);

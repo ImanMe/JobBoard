@@ -55,5 +55,27 @@ namespace JobBoard.AdminApi.Controllers
 
             return Created(newUri, jobDto);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] JobUpdateDto jobUpdateDto)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            var job = await _unitOfWork.Jobs.GetJob(id);
+
+            if (job == null) return NotFound();
+
+            _unitOfWork.JobOccupations.Delete(job.Occupations);
+
+            await _unitOfWork.Complete();
+
+            _mapper.Map(jobUpdateDto, job);
+
+            _unitOfWork.Jobs.Edit(job);
+
+            await _unitOfWork.Complete();
+
+            return NoContent();
+        }
     }
 }

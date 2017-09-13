@@ -24,7 +24,7 @@ namespace JobBoard.Persistence.Repositories
                 .Include(j => j.SalaryType)
                 .Include(j => j.Category)
                 .Include(j => j.JobBoard)
-                .Include(j => j.JobOccupations)
+                .Include(j => j.Occupations)
                 .ThenInclude(e => e.Occupation)
                 .FirstOrDefaultAsync(j => j.Id == id);
 
@@ -41,7 +41,7 @@ namespace JobBoard.Persistence.Repositories
                 .Include(j => j.SalaryType)
                 .Include(j => j.Category)
                 .Include(j => j.JobBoard)
-                .Include(j => j.JobOccupations)
+                .Include(j => j.Occupations)
                 .ThenInclude(e => e.Occupation)
                 .ToListAsync();
 
@@ -52,6 +52,11 @@ namespace JobBoard.Persistence.Repositories
         {
             _context.Jobs.Add(job);
             _context.ChangeTracker.DetectChanges();
+        }
+
+        public void Edit(Job job)
+        {
+            _context.Update(job);
         }
     }
 }
