@@ -18,7 +18,7 @@
 
         public string Address { get; set; }
 
-        public bool IsEverGreen { get; set; } = false;
+        public bool IsEverGreen { get; set; }
 
         public int SchedulingPod { get; set; }
 
@@ -50,7 +50,7 @@
 
         public string Currency { get; set; }
 
-        public bool IsBestPerforming { get; set; } = false;
+        public bool IsBestPerforming { get; set; }
 
         public string Author { get; set; }
 
@@ -68,7 +68,7 @@
 
         public long? EverGreenId { get; set; }
 
-        public bool IsSponsored { get; set; } = false;
+        public bool IsSponsored { get; set; }
 
         public string Tags { get; set; }
 

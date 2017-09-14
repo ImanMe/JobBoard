@@ -9,6 +9,9 @@ namespace JobBoard.Core.MappingProfiles
     {
         public MappingProfile()
         {
+            CreateMap<Stat, StatDto>();
+            CreateMap<StatCreateDto, Stat>();
+            CreateMap<StatUpdateDto, Stat>();
             CreateMap<Job, JobDto>()
                 .ForMember(dest => dest.JobBoard, opt => opt.MapFrom(src => src.JobBoard.JobBoardName))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.CategoryName))
@@ -43,7 +46,7 @@ namespace JobBoard.Core.MappingProfiles
                     foreach (var f in removedFeatures)
                         v.Occupations.Remove(f);
 
-                    // Add new features
+                    // AddAsync new features
                     var addedFeatures = vr.Occupations.Where(id => !v.Occupations.Any(f => f.OccupationId == id)).Select(id => new JobOccupation() { OccupationId = id }).ToList();
                     foreach (var f in addedFeatures)
                         v.Occupations.Add(f);

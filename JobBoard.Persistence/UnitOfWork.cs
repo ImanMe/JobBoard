@@ -6,7 +6,7 @@ namespace JobBoard.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork(ICountryRepository countries, JobBoardContext context, IStateRepository states, ICategoryRepository categories, IOccupationRepository occupations, IApplicantRepositroy applicants, IJobBoardRepository jobBoards, IJobRepository jobs, ISalaryTypeRepository salaryTypes, IEmploymentRepository employmentTypes, IJobOccupationRepository jobOccupations)
+        public UnitOfWork(ICountryRepository countries, JobBoardContext context, IStateRepository states, ICategoryRepository categories, IOccupationRepository occupations, IApplicantRepositroy applicants, IJobBoardRepository jobBoards, IJobRepository jobs, ISalaryTypeRepository salaryTypes, IEmploymentRepository employmentTypes, IJobOccupationRepository jobOccupations, IStatRepository stats)
         {
             _context = context;
 
@@ -20,6 +20,7 @@ namespace JobBoard.Persistence
             SalaryTypes = salaryTypes;
             EmploymentTypes = employmentTypes;
             JobOccupations = jobOccupations;
+            Stats = stats;
         }
 
         private readonly JobBoardContext _context;
@@ -33,8 +34,9 @@ namespace JobBoard.Persistence
         public ISalaryTypeRepository SalaryTypes { get; }
         public IEmploymentRepository EmploymentTypes { get; }
         public IJobOccupationRepository JobOccupations { get; }
+        public IStatRepository Stats { get; }
 
-        public async Task<int> Complete()
+        public async Task<int> CompleteAsync()
         {
             var result = await _context.SaveChangesAsync();
             return result;

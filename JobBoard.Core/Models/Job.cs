@@ -95,6 +95,8 @@ namespace JobBoard.Core.Models
 
         public string Tags { get; set; }
 
+        public bool HasStat => Stat != null;
+
         public Stat Stat { get; set; }
     }
 }

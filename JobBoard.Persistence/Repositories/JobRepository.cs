@@ -15,7 +15,7 @@ namespace JobBoard.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<Job> GetJob(long id)
+        public async Task<Job> GetJobAsync(long id)
         {
             var job = await _context.Jobs
                 .Include(j => j.Country)
@@ -29,10 +29,9 @@ namespace JobBoard.Persistence.Repositories
                 .FirstOrDefaultAsync(j => j.Id == id);
 
             return job;
-
         }
 
-        public async Task<IEnumerable<Job>> GetJobs()
+        public async Task<IEnumerable<Job>> GetJobsAsync()
         {
             var jobs = await _context.Jobs
                 .Include(j => j.Country)
@@ -48,9 +47,9 @@ namespace JobBoard.Persistence.Repositories
             return jobs;
         }
 
-        public void Add(Job job)
+        public async Task AddAsync(Job job)
         {
-            _context.Jobs.Add(job);
+            await _context.Jobs.AddAsync(job);
             _context.ChangeTracker.DetectChanges();
         }
 

@@ -18,7 +18,7 @@ namespace JobBoard.Persistence.DbInitializers
         {
             if (!_context.Countries.Any())
             {
-                // Add Data
+                // AddAsync Data
                 _context.AddRange(_sampleCountries);
                 await _context.SaveChangesAsync();
             }

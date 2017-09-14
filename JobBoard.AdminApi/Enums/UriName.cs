@@ -4,5 +4,6 @@
     {
         public const string JobBoardGet = "JobBoardGet";
         public const string JobGet = "JobGet";
+        public const string StatGet = "StatGet";
     }
 }

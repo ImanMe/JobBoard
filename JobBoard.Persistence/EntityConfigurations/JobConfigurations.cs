@@ -102,6 +102,8 @@ namespace JobBoard.Persistence.EntityConfigurations
             builder.HasOne(j => j.Stat)
                 .WithOne(s => s.Job)
                 .HasForeignKey<Stat>(s => s.JobId);
+
+            builder.Ignore(j => j.HasStat);
         }
     }
 }

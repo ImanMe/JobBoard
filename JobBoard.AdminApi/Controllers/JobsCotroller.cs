@@ -24,14 +24,14 @@ namespace JobBoard.AdminApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var jobs = await _unitOfWork.Jobs.GetJobs();
+            var jobs = await _unitOfWork.Jobs.GetJobsAsync();
             return Ok(_mapper.Map<IEnumerable<JobDto>>(jobs));
         }
 
         [HttpGet("{id}", Name = UriName.JobGet)]
         public async Task<IActionResult> Get(long id)
         {
-            var job = await _unitOfWork.Jobs.GetJob(id);
+            var job = await _unitOfWork.Jobs.GetJobAsync(id);
 
             return job != null
                 ? Ok(_mapper.Map<JobDto>(job))
@@ -45,9 +45,9 @@ namespace JobBoard.AdminApi.Controllers
 
             var job = _mapper.Map<Job>(jobCreateDto);
 
-            _unitOfWork.Jobs.Add(job);
+            await _unitOfWork.Jobs.AddAsync(job);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             var jobDto = _mapper.Map<JobDto>(job);
 
@@ -61,19 +61,19 @@ namespace JobBoard.AdminApi.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var job = await _unitOfWork.Jobs.GetJob(id);
+            var job = await _unitOfWork.Jobs.GetJobAsync(id);
 
             if (job == null) return NotFound();
 
             _unitOfWork.JobOccupations.Delete(job.Occupations);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             _mapper.Map(jobUpdateDto, job);
 
             _unitOfWork.Jobs.Edit(job);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             return NoContent();
         }

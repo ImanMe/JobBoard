@@ -15,7 +15,8 @@ namespace JobBoard.Core
         ISalaryTypeRepository SalaryTypes { get; }
         IEmploymentRepository EmploymentTypes { get; }
         IJobOccupationRepository JobOccupations { get; }
+        IStatRepository Stats { get; }
 
-        Task<int> Complete();
+        Task<int> CompleteAsync();
     }
 }

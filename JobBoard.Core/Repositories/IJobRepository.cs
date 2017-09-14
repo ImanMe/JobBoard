@@ -6,9 +6,9 @@ namespace JobBoard.Core.Repositories
 {
     public interface IJobRepository
     {
-        Task<Job> GetJob(long id);
-        Task<IEnumerable<Job>> GetJobs();
-        void Add(Job job);
+        Task<Job> GetJobAsync(long id);
+        Task<IEnumerable<Job>> GetJobsAsync();
+        Task AddAsync(Job job);
         void Edit(Job job);
     }
 }

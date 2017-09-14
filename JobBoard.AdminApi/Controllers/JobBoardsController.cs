@@ -47,7 +47,7 @@ namespace JobBoard.AdminApi.Controllers
 
             _unitOfWork.JobBoards.Add(jobBoard);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             var newUri = Url.Link(UriName.JobBoardGet, new { id = jobBoard.Id });
 
@@ -70,7 +70,7 @@ namespace JobBoard.AdminApi.Controllers
 
             _unitOfWork.JobBoards.Edit(jobBoardUpdated);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             return NoContent();
         }
@@ -84,7 +84,7 @@ namespace JobBoard.AdminApi.Controllers
 
             _unitOfWork.JobBoards.Delete(jobBoard);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             return NoContent();
         }

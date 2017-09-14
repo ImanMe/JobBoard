@@ -3,9 +3,9 @@ using JobBoard.Core.DTOs;
 
 namespace JobBoard.Core.Validations
 {
-    public class JobCreateDtoValidator : AbstractValidator<JobCreateDto>
+    public class JobUpdateDtoValidator : AbstractValidator<JobUpdateDto>
     {
-        public JobCreateDtoValidator()
+        public JobUpdateDtoValidator()
         {
             RuleFor(reg => reg.Title).NotEmpty().MaximumLength(255);
             RuleFor(reg => reg.JobDescription).NotEmpty();

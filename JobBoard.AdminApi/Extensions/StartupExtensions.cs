@@ -27,6 +27,7 @@ namespace JobBoard.AdminApi.Extensions
             services.AddScoped<IJobBoardRepository, JobBoardRepository>();
             services.AddScoped<IJobRepository, JobRepository>();
             services.AddScoped<IJobOccupationRepository, JobOccupationRepository>();
+            services.AddScoped<IStatRepository, StatRepository>();
             services.AddTransient<JobBoardInitializer>();
             services.AddDbContext<JobBoardContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("JobBoardConnection")));
