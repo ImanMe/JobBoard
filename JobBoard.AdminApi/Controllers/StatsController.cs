@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
 {
-    [Route("api/stats")]
+    [Route("api")]
     public class StatsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -20,10 +20,10 @@ namespace JobBoard.AdminApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{jobId}", Name = UriName.StatGet)]
+        [HttpGet("jobs/{jobId}/stats", Name = UriName.StatGet)]
         public async Task<IActionResult> Get(int jobId)
         {
-            var stat = await _unitOfWork.Stats.GetStat(jobId);
+            var stat = await _unitOfWork.Stats.GetStatByJobIdAsync(jobId);
             if (stat == null) return NotFound();
             return Ok(_mapper.Map<StatDto>(stat));
         }
@@ -42,7 +42,7 @@ namespace JobBoard.AdminApi.Controllers
         //    return Ok();
         //}
 
-        [HttpPost]
+        [HttpPost("stats")]
         public async Task<IActionResult> Post([FromBody]StatCreateDto statsCreateDto)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -53,15 +53,19 @@ namespace JobBoard.AdminApi.Controllers
 
             await _unitOfWork.CompleteAsync();
 
-            return Ok();
+            var statDto = _mapper.Map<StatDto>(stat);
+
+            var newUri = Url.Link(UriName.StatGet, new { jobId = stat.JobId });
+
+            return Created(newUri, statDto);
         }
 
-        [HttpPut("{jobId}")]
+        [HttpPut("stats/{jobId}")]
         public async Task<IActionResult> Put(int jobId, [FromBody] StatUpdateDto statUpdateDto)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var stat = await _unitOfWork.Stats.GetStat(jobId);
+            var stat = await _unitOfWork.Stats.GetStatByJobIdAsync(jobId);
 
             if (stat == null) return NotFound();
 

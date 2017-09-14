@@ -6,10 +6,8 @@ namespace JobBoard.Core.Repositories
 {
     public interface ICountryRepository
     {
-        //IEnumerable<KeyValuePair<int, string>> GetCountries();
-        Task<IEnumerable<Country>> GetCountries();
-        Task<IEnumerable<Country>> GetCountriesWithStates();
-        Task<Country> GetCountry(int id);
-        void Add(Country country);
+        Task<IEnumerable<Country>> GetCountriesAsync();
+        Task<IEnumerable<Country>> GetCountriesWithStatesAsync();
+        Task<Country> GetCountryAsync(int id);
     }
 }

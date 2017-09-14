@@ -2,6 +2,7 @@
 using JobBoard.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JobBoard.Persistence.Repositories
 {
@@ -17,14 +18,16 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public void Add(IEnumerable<JobOccupation> jobOccupation)
+        public async Task AddAsync(IEnumerable<JobOccupation> jobOccupation)
         {
-            _context.AddRange(jobOccupation);
+            await _context.AddRangeAsync(jobOccupation);
+            _context.ChangeTracker.DetectChanges();
         }
 
         public void Delete(IEnumerable<JobOccupation> jobOccupations)
         {
             _context.RemoveRange(jobOccupations);
+            _context.ChangeTracker.DetectChanges();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace JobBoard.Core.Repositories
 {
     public interface IStatRepository
     {
-        Task<Stat> GetStat(int jobId);
+        Task<Stat> GetStatByJobIdAsync(int jobId);
         //Task AddAsync(IEnumerable<Stat> stats);
         Task AddAsync(Stat stat);
         void Edit(Stat stat);

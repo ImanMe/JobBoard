@@ -21,7 +21,7 @@ namespace JobBoard.AdminApi.Controllers
 
         public async Task<ActionResult> Get()
         {
-            var salaryTypes = await _unitOfWork.SalaryTypes.GetSalaryTypes();
+            var salaryTypes = await _unitOfWork.SalaryTypes.GetSalaryTypesAsync();
 
             return Ok(_mapper.Map<IEnumerable<SalaryTypeDto>>(salaryTypes));
         }

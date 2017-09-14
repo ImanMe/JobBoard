@@ -19,14 +19,12 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<IEnumerable<State>> GetStatesById(int countryId)
+        public async Task<IEnumerable<State>> GetStatesByCountryIdAsync(int countryId)
         {
-            var states = await _context.States
+            return await _context.States
                 .Where(s => s.CountryId == countryId)
                 .OrderBy(s => s.StateName)
                 .ToListAsync();
-
-            return states;
         }
     }
 }

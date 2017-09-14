@@ -56,6 +56,7 @@ namespace JobBoard.Persistence.Repositories
         public void Edit(Job job)
         {
             _context.Update(job);
+            _context.ChangeTracker.DetectChanges();
         }
     }
 }

@@ -22,11 +22,11 @@ namespace JobBoard.AdminApi.Controllers
         [HttpGet("{countryId}/states")]
         public async Task<IActionResult> Get(int countryId)
         {
-            var country = await _unitOfWork.Countries.GetCountry(countryId);
+            var country = await _unitOfWork.Countries.GetCountryAsync(countryId);
             if (country == null)
                 return NotFound($"Country with the Id: {countryId} is not found");
 
-            var states = await _unitOfWork.States.GetStatesById(countryId);
+            var states = await _unitOfWork.States.GetStatesByCountryIdAsync(countryId);
 
             return states != null
                 ? (IActionResult)Ok(_mapper.Map<IEnumerable<StateDto>>(states))

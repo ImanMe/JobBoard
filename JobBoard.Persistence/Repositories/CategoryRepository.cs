@@ -18,7 +18,7 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<IEnumerable<Category>> GetCategories()
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
             return await _context.Categories.ToListAsync();
         }

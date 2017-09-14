@@ -22,7 +22,7 @@ namespace JobBoard.AdminApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var categories = await _unitOfWork.Categories.GetCategories();
+            var categories = await _unitOfWork.Categories.GetCategoriesAsync();
             return Ok(_mapper.Map<IEnumerable<CategoryDto>>(categories));
 
         }

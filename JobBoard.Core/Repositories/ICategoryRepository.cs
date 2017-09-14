@@ -6,6 +6,6 @@ namespace JobBoard.Core.Repositories
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetCategories();
+        Task<IEnumerable<Category>> GetCategoriesAsync();
     }
 }

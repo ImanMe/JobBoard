@@ -31,7 +31,7 @@ namespace JobBoard.AdminApi.Controllers
         [HttpGet("{id}", Name = UriName.JobBoardGet)]
         public async Task<IActionResult> Get(int id)
         {
-            var jobBoard = await _unitOfWork.JobBoards.GetJobBoard(id);
+            var jobBoard = await _unitOfWork.JobBoards.GetJobBoardAsync(id);
 
             return jobBoard != null
                 ? (IActionResult)Ok(_mapper.Map<JobBoardDto>(jobBoard))
@@ -45,7 +45,7 @@ namespace JobBoard.AdminApi.Controllers
 
             var jobBoard = _mapper.Map<Core.Models.JobBoard>(jobBoardCreateDto);
 
-            _unitOfWork.JobBoards.Add(jobBoard);
+            await _unitOfWork.JobBoards.AddAsync(jobBoard);
 
             await _unitOfWork.CompleteAsync();
 
@@ -59,7 +59,7 @@ namespace JobBoard.AdminApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromRoute]int id, [FromBody]JobBoardUpdateDto jobBoardUpdateDto)
         {
-            var jobBoard = _unitOfWork.JobBoards.GetJobBoard(id);
+            var jobBoard = _unitOfWork.JobBoards.GetJobBoardAsync(id);
 
             if (jobBoard == null) return NotFound();
 
@@ -78,7 +78,7 @@ namespace JobBoard.AdminApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute]int id)
         {
-            var jobBoard = await _unitOfWork.JobBoards.GetJobBoard(id);
+            var jobBoard = await _unitOfWork.JobBoards.GetJobBoardAsync(id);
 
             if (jobBoard == null) return NotFound();
 

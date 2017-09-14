@@ -16,10 +16,9 @@ namespace JobBoard.Persistence.Repositories
             _context.ChangeTracker.QueryTrackingBehavior
                 = QueryTrackingBehavior.NoTracking;
         }
-        public async Task<Stat> GetStat(int jobId)
+        public async Task<Stat> GetStatByJobIdAsync(int jobId)
         {
-            var stat = await _context.Stats.FirstOrDefaultAsync(s => s.JobId == jobId);
-            return stat;
+            return await _context.Stats.FirstOrDefaultAsync(s => s.JobId == jobId);
         }
 
         //public async Task AddAsync(IEnumerable<Stat> stats)

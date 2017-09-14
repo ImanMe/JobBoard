@@ -6,6 +6,6 @@ namespace JobBoard.Core.Repositories
 {
     public interface IStateRepository
     {
-        Task<IEnumerable<State>> GetStatesById(int countryId);
+        Task<IEnumerable<State>> GetStatesByCountryIdAsync(int countryId);
     }
 }

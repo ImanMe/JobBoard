@@ -18,7 +18,7 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<IEnumerable<SalaryType>> GetSalaryTypes()
+        public async Task<IEnumerable<SalaryType>> GetSalaryTypesAsync()
         {
             return await _context.SalaryTypes.ToListAsync();
         }

@@ -2,7 +2,7 @@
 using JobBoard.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace JobBoard.Persistence.Repositories
 {
@@ -18,9 +18,9 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public IEnumerable<Applicant> GetApplicants()
+        public async Task<IEnumerable<Applicant>> GetApplicantsAsync()
         {
-            return _context.Applicants.ToList();
+            return await _context.Applicants.ToListAsync();
         }
     }
 }

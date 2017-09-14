@@ -6,6 +6,6 @@ namespace JobBoard.Core.Repositories
 {
     public interface IEmploymentRepository
     {
-        Task<IEnumerable<EmploymentType>> GetEmploymentTypes();
+        Task<IEnumerable<EmploymentType>> GetEmploymentTypesAsync();
     }
 }

@@ -23,8 +23,8 @@ namespace JobBoard.AdminApi.Controllers
         public async Task<IActionResult> Get(bool includeStates)
         {
             var countries = includeStates
-                ? await _unitOfWork.Countries.GetCountriesWithStates()
-                : await _unitOfWork.Countries.GetCountries();
+                ? await _unitOfWork.Countries.GetCountriesWithStatesAsync()
+                : await _unitOfWork.Countries.GetCountriesAsync();
 
             return Ok(_mapper.Map<IEnumerable<CountryDto>>(countries));
         }

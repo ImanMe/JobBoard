@@ -22,7 +22,7 @@ namespace JobBoard.AdminApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var occupations = await _unitOfWork.Occupations.GetOccupations();
+            var occupations = await _unitOfWork.Occupations.GetOccupationsAsync();
 
             return Ok(_mapper.Map<IEnumerable<OccupationDto>>(occupations));
         }

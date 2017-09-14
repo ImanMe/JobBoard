@@ -19,21 +19,17 @@ namespace JobBoard.Persistence.Repositories
 
         public async Task<IEnumerable<Core.Models.JobBoard>> GetJobBoards()
         {
-            var jobBoards = await _context.JobBoards.ToListAsync();
-
-            return jobBoards;
+            return await _context.JobBoards.ToListAsync();
         }
 
-        public async Task<Core.Models.JobBoard> GetJobBoard(int id)
+        public async Task<Core.Models.JobBoard> GetJobBoardAsync(int id)
         {
-            var jobBoard = await _context.JobBoards.FindAsync(id);
-
-            return jobBoard;
+            return await _context.JobBoards.FindAsync(id);
         }
 
-        public void Add(Core.Models.JobBoard jobBoard)
+        public async Task AddAsync(Core.Models.JobBoard jobBoard)
         {
-            _context.JobBoards.Add(jobBoard);
+            await _context.JobBoards.AddAsync(jobBoard);
             _context.ChangeTracker.DetectChanges();
         }
 

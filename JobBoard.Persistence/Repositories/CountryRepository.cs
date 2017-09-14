@@ -19,49 +19,23 @@ namespace JobBoard.Persistence.Repositories
                 = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<IEnumerable<Country>> GetCountries()
+        public async Task<IEnumerable<Country>> GetCountriesAsync()
         {
-            var countries = await _context.Countries
+            return await _context.Countries
                 .OrderBy(c => c.CountryName)
                .ToListAsync();
-
-            return countries;
         }
 
-        public async Task<IEnumerable<Country>> GetCountriesWithStates()
+        public async Task<IEnumerable<Country>> GetCountriesWithStatesAsync()
         {
-            var countries = await _context.Countries
+            return await _context.Countries
                 .Include(c => c.States)
                 .ToListAsync();
-
-            return countries;
         }
 
-        public async Task<Country> GetCountry(int id)
+        public async Task<Country> GetCountryAsync(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
-
-            return country;
-        }
-
-
-        public void Add(Country country)
-        {
-            _context.Countries.Add(country);
-        }
-
-        public void Delete(int id)
-        {
-            var country = _context.Countries.Find(id);
-            _context.Entry(country).State = EntityState.Deleted;
-
-        }
-
-        public void Edit(int id)
-        {
-            var country = _context.Countries.Find(id);
-            _context.Entry(country).State = EntityState.Modified;
-
+            return await _context.Countries.FindAsync(id);
         }
     }
 }

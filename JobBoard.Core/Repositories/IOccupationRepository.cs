@@ -6,6 +6,6 @@ namespace JobBoard.Core.Repositories
 {
     public interface IOccupationRepository
     {
-        Task<IEnumerable<Occupation>> GetOccupations();
+        Task<IEnumerable<Occupation>> GetOccupationsAsync();
     }
 }
