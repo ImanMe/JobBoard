@@ -4,6 +4,7 @@ using JobBoard.Core;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -47,6 +48,8 @@ namespace JobBoard.AdminApi.Controllers
 
             await _unitOfWork.Jobs.AddAsync(job);
 
+            job.CreatedBy = "Iman";
+
             await _unitOfWork.CompleteAsync();
 
             var jobDto = _mapper.Map<JobDto>(job);
@@ -70,6 +73,10 @@ namespace JobBoard.AdminApi.Controllers
             await _unitOfWork.CompleteAsync();
 
             _mapper.Map(jobUpdateDto, job);
+
+            job.EditedBy = "Iman";
+
+            job.EditedDate = DateTime.Now.Date;
 
             _unitOfWork.Jobs.Edit(job);
 

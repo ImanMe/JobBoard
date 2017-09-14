@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace JobBoard.Core.DTOs
 {
@@ -37,21 +36,15 @@ namespace JobBoard.Core.DTOs
 
         public string CompanyName { get; set; }
 
-        public DateTime ActivationDate { get; set; }
+        public string ActivationDate { get; set; }
 
-        public DateTime ExpirationDate { get; set; }
+        public string ExpirationDate { get; set; }
 
         public string EmailTo { get; set; }
-
-        public string CreatedBy { get; set; }
 
         public int CategoryId { get; set; }
 
         public ICollection<int> Occupations { get; set; }
-
-        public string EditedBy { get; set; }
-
-        public DateTime? EditedDate { get; set; }
 
         public string Division { get; set; }
 

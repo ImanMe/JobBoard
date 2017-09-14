@@ -19,8 +19,6 @@ namespace JobBoard.Core.Validations
             RuleFor(reg => reg.CompanyName).NotEmpty();
             RuleFor(reg => reg.ActivationDate).NotEmpty();
             RuleFor(reg => reg.ExpirationDate).NotEmpty();
-            RuleFor(reg => reg.CreatedBy).MaximumLength(120);
-            RuleFor(reg => reg.EditedBy).MaximumLength(120);
             RuleFor(reg => reg.Division).NotEmpty().MaximumLength(120);
             RuleFor(reg => reg.Currency).MaximumLength(10);
             RuleFor(reg => reg.JobBoardId).NotEmpty();

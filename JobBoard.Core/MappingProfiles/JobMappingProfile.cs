@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
+using System;
 using System.Linq;
 
 namespace JobBoard.Core.MappingProfiles
@@ -17,11 +18,11 @@ namespace JobBoard.Core.MappingProfiles
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.CountryCode))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State.StateName))
                 .ForMember(dest => dest.ActivationDate,
-                    opt => opt.MapFrom(src => src.ActivationDate.ToShortDateString()))
+                    opt => opt.MapFrom(src => src.ActivationDate.Date.ToShortDateString()))
                 .ForMember(dest => dest.CreatedDate,
-                    opt => opt.MapFrom(src => src.CreatedDate.ToShortDateString()))
+                    opt => opt.MapFrom(src => src.CreatedDate.Date.ToShortDateString()))
                 .ForMember(dest => dest.ExpirationDate,
-                    opt => opt.MapFrom(src => src.ExpirationDate.ToShortDateString()))
+                    opt => opt.MapFrom(src => src.ExpirationDate.Date.ToShortDateString()))
                 .ForMember(dest => dest.EditedDate, opt => opt.ResolveUsing(src =>
                 {
                     var dt = src.EditedDate;
@@ -29,12 +30,19 @@ namespace JobBoard.Core.MappingProfiles
                 }));
 
             CreateMap<JobCreateDto, Job>()
-                .ForMember(dest => dest.Occupations, opt => opt.MapFrom(src => src.SelectedOccupation.Select(jo => new JobOccupation { OccupationId = jo })));
-
-            CreateMap<Job, JobCreateDto>()
-                .ForMember(dest => dest.SelectedOccupation, opt => opt.MapFrom(src => src.Occupations.Select(f => f.OccupationId)));
+                .ForMember(dest => dest.Occupations,
+                    opt => opt.MapFrom(
+                        src => src.SelectedOccupation.Select(jo => new JobOccupation { OccupationId = jo })))
+                .ForMember(dest => dest.ActivationDate,
+                    opt => opt.MapFrom(src => DateTime.Parse(src.ActivationDate)))
+                .ForMember(dest => dest.ExpirationDate,
+                    opt => opt.MapFrom(src => DateTime.Parse(src.ExpirationDate)));
 
             CreateMap<JobUpdateDto, Job>()
+                .ForMember(dest => dest.ActivationDate,
+                    opt => opt.MapFrom(src => DateTime.Parse(src.ActivationDate)))
+                .ForMember(dest => dest.ExpirationDate,
+                    opt => opt.MapFrom(src => DateTime.Parse(src.ExpirationDate)))
                 .ForMember(v => v.Occupations, opt => opt.Ignore())
                 .AfterMap((vr, v) =>
                 {
