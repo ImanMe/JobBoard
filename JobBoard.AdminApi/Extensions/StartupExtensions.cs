@@ -32,6 +32,7 @@ namespace JobBoard.AdminApi.Extensions
             services.AddDbContext<JobBoardContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("JobBoardConnection")));
             services.AddAutoMapper();
+            services.AddCors();
             services.AddMvc()
                 .AddFluentValidation(fvc =>
                 fvc.RegisterValidatorsFromAssemblyContaining<JobBoardCreateDtoValidator>());

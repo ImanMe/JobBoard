@@ -38,6 +38,12 @@ namespace JobBoard.AdminApi
                 app.UseExceptionHandler();
             }
 
+            app.UseCors(
+                options => options.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            );
+
             app.UseMvc();
 
             seeder.Seed().Wait();
