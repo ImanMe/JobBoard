@@ -3,12 +3,14 @@ using JobBoard.AdminApi.Enums;
 using JobBoard.Core;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
 {
     [Route("api")]
+    [AllowAnonymous]
     public class StatsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

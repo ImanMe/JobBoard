@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using JobBoard.Core;
 using JobBoard.Core.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
 {
+    [AllowAnonymous]
     [Route("api/employmentTypes")]
     public class EmploymentTypesController : Controller
     {

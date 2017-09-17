@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JobBoard.Core;
 using JobBoard.Core.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace JobBoard.AdminApi.Controllers
 {
     [Route("api/salaryTypes")]
+    [AllowAnonymous]
     public class SalaryTypesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

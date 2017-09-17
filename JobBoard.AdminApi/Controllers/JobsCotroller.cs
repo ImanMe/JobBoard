@@ -3,14 +3,15 @@ using JobBoard.AdminApi.Enums;
 using JobBoard.Core;
 using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JobBoard.AdminApi.Controllers
 {
     [Route("api/jobs")]
+    [AllowAnonymous]
     public class JobsCotroller : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -23,10 +24,11 @@ namespace JobBoard.AdminApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(JobQueryDto jobQueryDto)
         {
-            var jobs = await _unitOfWork.Jobs.GetJobsAsync();
-            return Ok(_mapper.Map<IEnumerable<JobDto>>(jobs));
+            var jobQuery = _mapper.Map<JobQuery>(jobQueryDto);
+            var queryResult = await _unitOfWork.Jobs.GetJobsAsync(jobQuery);
+            return Ok(_mapper.Map<QueryResultDto<JobDto>>(queryResult));
         }
 
         [HttpGet("{id}", Name = UriName.JobGet)]

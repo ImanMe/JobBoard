@@ -1,7 +1,9 @@
 ﻿using JobBoard.Core.Models;
 using JobBoard.Core.Repositories;
+using JobBoard.Persistence.Extensions;
+using JobBoard.Persistence.Helpers;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace JobBoard.Persistence.Repositories
@@ -31,20 +33,32 @@ namespace JobBoard.Persistence.Repositories
             return job;
         }
 
-        public async Task<IEnumerable<Job>> GetJobsAsync()
+        public async Task<QueryResult<Job>> GetJobsAsync(JobQuery queryObj)
         {
-            var jobs = await _context.Jobs
+            var result = new QueryResult<Job>();
+
+            var query = _context.Jobs
                 .Include(j => j.Country)
                 .Include(j => j.State)
                 .Include(j => j.EmploymentType)
                 .Include(j => j.SalaryType)
                 .Include(j => j.Category)
                 .Include(j => j.JobBoard)
-                .Include(j => j.Occupations)
-                .ThenInclude(e => e.Occupation)
-                .ToListAsync();
+                .AsQueryable();
 
-            return jobs;
+            query = query.ApplyFiltering(queryObj);
+
+            var columnsMap = ColumnsMap.CreateColumnsMap();
+
+            query = query.ApplyOrdering(queryObj, columnsMap);
+
+            result.TotalItems = await query.CountAsync();
+
+            query = query.ApplyPaging(queryObj);
+
+            result.Items = await query.ToListAsync();
+
+            return result;
         }
 
         public async Task AddAsync(Job job)
