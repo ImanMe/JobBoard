@@ -44,6 +44,7 @@ namespace JobBoard.Persistence.Repositories
                 .Include(j => j.SalaryType)
                 .Include(j => j.Category)
                 .Include(j => j.JobBoard)
+                .Include(j => j.Stat)
                 .AsQueryable();
 
             query = query.ApplyFiltering(queryObj);

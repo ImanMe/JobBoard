@@ -41,6 +41,4 @@ namespace JobBoard.Persistence.Extensions
             return query.Skip((queryObj.Page - 1) * queryObj.PageSize).Take(queryObj.PageSize);
         }
     }
-
-
 }

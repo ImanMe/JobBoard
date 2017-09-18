@@ -74,6 +74,6 @@
 
         public bool IsActive { get; set; }
 
-        //public Stat Stat { get; set; }
+        public StatDto Stat { get; set; }
     }
 }
