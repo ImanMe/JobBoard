@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\JobBoardAdminApi20170917080255 - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
