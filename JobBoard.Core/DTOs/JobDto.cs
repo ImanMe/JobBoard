@@ -72,6 +72,8 @@
 
         public string Tags { get; set; }
 
+        public bool IsActive { get; set; }
+
         //public Stat Stat { get; set; }
     }
 }

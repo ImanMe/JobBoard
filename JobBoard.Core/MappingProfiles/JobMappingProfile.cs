@@ -17,6 +17,7 @@ namespace JobBoard.Core.MappingProfiles
                 .ForMember(dest => dest.SalaryType, opt => opt.MapFrom(src => src.SalaryType.Name))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.CountryCode))
                 .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State.StateName))
+                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.ExpirationDate >= DateTime.Now))
                 .ForMember(dest => dest.ActivationDate,
                     opt => opt.MapFrom(src => src.ActivationDate.Date.ToShortDateString()))
                 .ForMember(dest => dest.CreatedDate,
