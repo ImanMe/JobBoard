@@ -15,6 +15,9 @@ namespace JobBoard.Persistence.Repositories
         public JobRepository(JobBoardContext context)
         {
             _context = context;
+
+            _context.ChangeTracker.QueryTrackingBehavior
+                = QueryTrackingBehavior.NoTracking;
         }
 
         public async Task<Job> GetJobAsync(long id)
@@ -49,6 +52,8 @@ namespace JobBoard.Persistence.Repositories
 
             query = query.ApplyFiltering(queryObj);
 
+            query = query.SortBasedOnListType(queryObj);
+
             var columnsMap = ColumnsMap.CreateColumnsMap();
 
             query = query.ApplyOrdering(queryObj, columnsMap);
@@ -71,6 +76,12 @@ namespace JobBoard.Persistence.Repositories
         public void Edit(Job job)
         {
             _context.Update(job);
+            _context.ChangeTracker.DetectChanges();
+        }
+
+        public void Delete(Job job)
+        {
+            _context.Entry(job).State = EntityState.Deleted;
             _context.ChangeTracker.DetectChanges();
         }
     }

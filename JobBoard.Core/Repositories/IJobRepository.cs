@@ -9,5 +9,6 @@ namespace JobBoard.Core.Repositories
         Task<QueryResult<Job>> GetJobsAsync(JobQuery queryObj);
         Task AddAsync(Job job);
         void Edit(Job job);
+        void Delete(Job job);
     }
 }

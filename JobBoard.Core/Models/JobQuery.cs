@@ -4,6 +4,7 @@ namespace JobBoard.Core.Models
 {
     public class JobQuery : IQueryObject
     {
+        public string ListType { get; set; }
         public int? Id { get; set; }
         public bool? IsActive { get; set; }
         public string Title { get; set; }

@@ -1,5 +1,6 @@
 ﻿using JobBoard.Core.DTOs;
 using JobBoard.Core.Models;
+using JobBoard.Persistence.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,67 @@ namespace JobBoard.Persistence.Extensions
             if (queryObj.PageSize <= 0) queryObj.PageSize = 10;
 
             return query.Skip((queryObj.Page - 1) * queryObj.PageSize).Take(queryObj.PageSize);
+        }
+
+        public static IQueryable<Job> SortBasedOnListType(this IQueryable<Job> query, JobQuery queryObj)
+        {
+            if (queryObj.ListType == ListType.Listing)
+                query = SortForListing(query);
+
+            else if (queryObj.ListType == ListType.Conversion)
+                query = SortForConversion(query);
+
+            else if (queryObj.ListType == ListType.Duplicate)
+                query = SortForDuplicate(query);
+
+            return query;
+        }
+
+        private static IQueryable<Job> SortForConversion(this IQueryable<Job> query)
+        {
+            query = query
+                .OrderBy(j => j.SchedulingPod)
+                .ThenBy(j => j.JobBoard.JobBoardName)
+                .ThenBy(j => j.City)
+                .ThenBy(j => j.Category.CategoryName)
+                .ThenByDescending(j => j.ExpirationDate >= DateTime.Now)
+                .ThenByDescending(j => j.Stat.Bob)
+                .ThenByDescending(j => j.Stat.Intvs2)
+                .ThenByDescending(j => j.Stat.Intvs)
+                .ThenByDescending(j => j.Stat.ApsCl)
+                .ThenByDescending(j => j.Id);
+
+            return query;
+        }
+
+        private static IQueryable<Job> SortForListing(this IQueryable<Job> query)
+        {
+            query = query
+                .OrderBy(j => j.SchedulingPod)
+                .ThenBy(j => j.JobBoard.JobBoardName)
+                .ThenBy(j => j.City)
+                .ThenBy(j => j.Category.CategoryName)
+                .ThenByDescending(j => j.ExpirationDate >= DateTime.Now)
+                .ThenByDescending(j => j.Stat.ApsCl)
+                .ThenByDescending(j => j.Stat.Bob)
+                .ThenByDescending(j => j.Stat.Intvs2)
+                .ThenByDescending(j => j.Stat.Intvs)
+                .ThenByDescending(j => j.Id);
+
+            return query;
+        }
+
+        private static IQueryable<Job> SortForDuplicate(this IQueryable<Job> query)
+        {
+            query = query
+                .Where(j => j.CloneFrom != null)
+                .GroupBy(j => new { j.CloneFrom, j.SchedulingPod, j.City, j.CompanyName })
+                .Where(x => x.Count() > 1)
+                .SelectMany(x => x.Select(r => r))
+                .OrderBy(j => j.CloneFrom)
+                .ThenBy(j => j.Id);
+
+            return query;
         }
     }
 }

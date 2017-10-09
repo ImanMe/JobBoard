@@ -2,6 +2,7 @@
 {
     public class JobQueryDto : IQueryObject
     {
+        public string ListType { get; set; }
         public int? Id { get; set; }
         public bool? IsActive { get; set; }
         public string Title { get; set; }

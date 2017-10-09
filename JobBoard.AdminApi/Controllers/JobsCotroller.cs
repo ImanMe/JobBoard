@@ -87,5 +87,19 @@ namespace JobBoard.AdminApi.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute]int id)
+        {
+            var job = await _unitOfWork.Jobs.GetJobAsync(id);
+
+            if (job == null) return NotFound();
+
+            _unitOfWork.Jobs.Delete(job);
+
+            await _unitOfWork.CompleteAsync();
+
+            return NoContent();
+        }
     }
 }
