@@ -17,6 +17,36 @@ namespace JobBoard.Persistence.Extensions
             if (!string.IsNullOrEmpty(queryObj.Title))
                 query = query.Where(j => j.Title.Contains(queryObj.Title));
 
+            if (queryObj.SchedulingPod.HasValue)
+                query = query.Where(j => j.SchedulingPod == queryObj.SchedulingPod);
+
+            if (queryObj.OfficeId.HasValue)
+                query = query.Where(j => j.OfficeId == queryObj.OfficeId);
+
+            if (!string.IsNullOrEmpty(queryObj.JobBoard))
+                query = query.Where(j => j.JobBoard.JobBoardName.Contains(queryObj.JobBoard));
+
+            if (!string.IsNullOrEmpty(queryObj.Division))
+                query = query.Where(j => j.Division.Contains(queryObj.Division));
+
+            if (!string.IsNullOrEmpty(queryObj.City))
+                query = query.Where(j => j.City.Contains(queryObj.City));
+
+            if (!string.IsNullOrEmpty(queryObj.State))
+                query = query.Where(j => j.State.StateName.Contains(queryObj.State));
+
+            if (!string.IsNullOrEmpty(queryObj.Country))
+                query = query.Where(j => j.Country.CountryName.Contains(queryObj.Country));
+
+            if (!string.IsNullOrEmpty(queryObj.Category))
+                query = query.Where(j => j.Category.CategoryName.Contains(queryObj.Category));
+
+            if (!string.IsNullOrEmpty(queryObj.CompanyName))
+                query = query.Where(j => j.CompanyName.Contains(queryObj.CompanyName));
+
+            if (!string.IsNullOrEmpty(queryObj.CreatedBy))
+                query = query.Where(j => j.CreatedBy.Contains(queryObj.CreatedBy));
+
             return query;
         }
 

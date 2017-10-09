@@ -29,6 +29,7 @@ namespace JobBoard.AdminApi.Controllers
             var jobQuery = _mapper.Map<JobQuery>(jobQueryDto);
             var queryResult = await _unitOfWork.Jobs.GetJobsAsync(jobQuery);
             return Ok(_mapper.Map<QueryResultDto<JobDto>>(queryResult));
+
         }
 
         [HttpGet("{id}", Name = UriName.JobGet)]
