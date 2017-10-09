@@ -5,6 +5,7 @@ namespace JobBoard.Core.Models
     public class JobQuery : IQueryObject
     {
         public int? Id { get; set; }
+        public bool? IsActive { get; set; }
         public string Title { get; set; }
         public int? SchedulingPod { get; set; }
         public int? OfficeId { get; set; }
