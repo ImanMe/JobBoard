@@ -99,6 +99,12 @@ namespace JobBoard.Core.Models
 
         public Stat Stat { get; set; }
 
+        public void SetEditInfo(string editedBy)
+        {
+            EditedBy = editedBy;
+            EditedDate = DateTime.Now;
+        }
+
         public void Expire()
         {
             if (ExpirationDate > DateTime.Now)

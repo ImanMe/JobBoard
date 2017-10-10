@@ -29,7 +29,6 @@ namespace JobBoard.AdminApi.Controllers
             var jobQuery = _mapper.Map<JobQuery>(jobQueryDto);
             var queryResult = await _unitOfWork.Jobs.GetJobsAsync(jobQuery);
             return Ok(_mapper.Map<QueryResultDto<JobDto>>(queryResult));
-
         }
 
         [HttpGet("{id}", Name = UriName.JobGet)]
@@ -77,9 +76,7 @@ namespace JobBoard.AdminApi.Controllers
 
             _mapper.Map(jobUpdateDto, job);
 
-            job.EditedBy = "Iman";
-
-            job.EditedDate = DateTime.Now.Date;
+            job.SetEditInfo("Iman");
 
             _unitOfWork.Jobs.Edit(job);
 
