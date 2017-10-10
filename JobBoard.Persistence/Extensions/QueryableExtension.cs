@@ -78,13 +78,13 @@ namespace JobBoard.Persistence.Extensions
         public static IQueryable<Job> SortBasedOnListType(this IQueryable<Job> query, JobQuery queryObj)
         {
             if (queryObj.ListType == ListType.Listing)
-                query = SortForListing(query);
+                query = query.SortForListing();
 
             else if (queryObj.ListType == ListType.Conversion)
-                query = SortForConversion(query);
+                query = query.SortForConversion();
 
             else if (queryObj.ListType == ListType.Duplicate)
-                query = SortForDuplicate(query);
+                query = query.SortForDuplicate();
 
             return query;
         }
