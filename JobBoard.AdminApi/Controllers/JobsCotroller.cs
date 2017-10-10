@@ -101,5 +101,23 @@ namespace JobBoard.AdminApi.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("expire/{id}")]
+        public async Task<IActionResult> Expire(long id)
+        {
+            var job = await _unitOfWork.Jobs.GetJobAsync(id);
+
+            if (job == null) return NotFound();
+
+            if (job.ExpirationDate < DateTime.Now) return BadRequest();
+
+            job.Expire();
+
+            _unitOfWork.Jobs.Edit(job);
+
+            await _unitOfWork.CompleteAsync();
+
+            return NoContent();
+        }
     }
 }

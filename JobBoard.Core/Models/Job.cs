@@ -98,5 +98,11 @@ namespace JobBoard.Core.Models
         public bool HasStat => Stat != null;
 
         public Stat Stat { get; set; }
+
+        public void Expire()
+        {
+            if (ExpirationDate > DateTime.Now)
+                ExpirationDate = DateTime.Now.AddDays(-1);
+        }
     }
 }
