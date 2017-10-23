@@ -12,12 +12,12 @@ namespace JobBoard.AdminApi.Controllers
 {
     [Route("api/jobs")]
     [AllowAnonymous]
-    public class JobsCotroller : Controller
+    public class JobsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public JobsCotroller(IUnitOfWork unitOfWork, IMapper mapper)
+        public JobsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;

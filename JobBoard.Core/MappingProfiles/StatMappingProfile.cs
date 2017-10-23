@@ -8,6 +8,7 @@ namespace JobBoard.Core.MappingProfiles
     {
         public StatMappingProfile()
         {
+            CreateMap<StatDto, Stat>();
             CreateMap<Stat, StatDto>();
             CreateMap<StatCreateDto, Stat>();
             CreateMap<StatUpdateDto, Stat>();

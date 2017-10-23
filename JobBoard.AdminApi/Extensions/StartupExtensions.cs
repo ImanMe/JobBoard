@@ -39,5 +39,4 @@ namespace JobBoard.AdminApi.Extensions
             return services;
         }
     }
-
 }

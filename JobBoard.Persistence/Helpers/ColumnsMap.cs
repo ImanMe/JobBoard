@@ -11,9 +11,10 @@ namespace JobBoard.Persistence.Helpers
         {
             return new Dictionary<string, Expression<Func<Job, object>>>
             {
+                ["id"] = v => v.Id,
                 ["title"] = v => v.Title,
                 ["jobboard"] = v => v.JobBoard.JobBoardName,
-                ["activationDate"] = v => v.ActivationDate,
+                ["activationdate"] = v => v.ActivationDate,
                 ["expirationdate"] = v => v.ExpirationDate,
                 ["clonefrom"] = v => v.CloneFrom,
                 ["evergreenid"] = v => v.EverGreenId,

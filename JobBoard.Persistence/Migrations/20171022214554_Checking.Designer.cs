@@ -11,9 +11,10 @@ using System;
 namespace JobBoard.Persistence.Migrations
 {
     [DbContext(typeof(JobBoardContext))]
-    partial class JobBoardContextModelSnapshot : ModelSnapshot
+    [Migration("20171022214554_Checking")]
+    partial class Checking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
