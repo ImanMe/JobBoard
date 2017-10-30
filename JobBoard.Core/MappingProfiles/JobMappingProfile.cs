@@ -30,6 +30,15 @@ namespace JobBoard.Core.MappingProfiles
                     return dt?.ToShortDateString();
                 }));
 
+            CreateMap<Job, JobCreateDto>()
+                .ForMember(dest => dest.SelectedOccupation,
+                    opt => opt.MapFrom(
+                        src => src.Occupations.Select(jo => jo.OccupationId)))
+            .ForMember(dest => dest.ActivationDate,
+                opt => opt.MapFrom(src => src.ActivationDate.ToString("MM/dd/yyyy")))
+            .ForMember(dest => dest.ExpirationDate,
+                opt => opt.MapFrom(src => src.ExpirationDate.ToString("MM/dd/yyyy")));
+
             CreateMap<JobCreateDto, Job>()
                 .ForMember(dest => dest.Occupations,
                     opt => opt.MapFrom(

@@ -28,6 +28,7 @@ namespace JobBoard.AdminApi.Controllers
         {
             var jobQuery = _mapper.Map<JobQuery>(jobQueryDto);
             var queryResult = await _unitOfWork.Jobs.GetJobsAsync(jobQuery);
+            var x = _mapper.Map<QueryResultDto<JobDto>>(queryResult);
             return Ok(_mapper.Map<QueryResultDto<JobDto>>(queryResult));
         }
 
@@ -38,6 +39,16 @@ namespace JobBoard.AdminApi.Controllers
 
             return job != null
                 ? Ok(_mapper.Map<JobDto>(job))
+                : (IActionResult)NotFound();
+        }
+
+        [HttpGet("GetJobsForUpdate/{id}")]
+        public async Task<IActionResult> GetJobsForUpdate(long id)
+        {
+            var job = await _unitOfWork.Jobs.GetJobAsync(id);
+
+            return job != null
+                ? Ok(_mapper.Map<JobCreateDto>(job))
                 : (IActionResult)NotFound();
         }
 

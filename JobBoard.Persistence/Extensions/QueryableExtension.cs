@@ -53,6 +53,11 @@ namespace JobBoard.Persistence.Extensions
             if (!string.IsNullOrEmpty(queryObj.CreatedBy))
                 query = query.Where(j => j.CreatedBy.Contains(queryObj.CreatedBy));
 
+            if (queryObj.ListType == ListType.Stats)
+                query = query
+                    .Where(j => j.Stat == null || j.Stat.ApsCl == null)
+                    .Where(j => j.ExpirationDate < DateTime.Now.AddDays(-30));
+
             return query;
         }
 
@@ -85,6 +90,9 @@ namespace JobBoard.Persistence.Extensions
 
             else if (queryObj.ListType == ListType.Duplicate)
                 query = query.SortForDuplicate();
+
+            else if (queryObj.ListType == ListType.Stats)
+                query = query.SortForStatsPending();
 
             return query;
         }
@@ -131,6 +139,19 @@ namespace JobBoard.Persistence.Extensions
                 .Where(x => x.Count() > 1)
                 .SelectMany(x => x.Select(r => r))
                 .OrderBy(j => j.CloneFrom)
+                .ThenBy(j => j.Id);
+
+            return query;
+        }
+
+        private static IQueryable<Job> SortForStatsPending(this IQueryable<Job> query)
+        {
+            query = query
+                .OrderByDescending(j => j.ExpirationDate)
+                .ThenByDescending(j => j.ActivationDate)
+                .ThenBy(j => j.JobBoard.JobBoardName)
+                .ThenBy(j => j.SchedulingPod)
+                .ThenBy(j => j.Title)
                 .ThenBy(j => j.Id);
 
             return query;

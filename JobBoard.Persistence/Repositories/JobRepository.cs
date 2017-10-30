@@ -29,6 +29,7 @@ namespace JobBoard.Persistence.Repositories
                 .Include(j => j.SalaryType)
                 .Include(j => j.Category)
                 .Include(j => j.JobBoard)
+                .Include(j => j.Stat)
                 .Include(j => j.Occupations)
                 .ThenInclude(e => e.Occupation)
                 .FirstOrDefaultAsync(j => j.Id == id);
